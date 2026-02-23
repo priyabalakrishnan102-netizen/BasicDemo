@@ -1,4 +1,4 @@
-package ExtentReports;
+package bookmodule;
 
 import org.testng.Reporter;
 import org.testng.annotations.Test;
