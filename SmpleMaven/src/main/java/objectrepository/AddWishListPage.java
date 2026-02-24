@@ -22,6 +22,8 @@ public class AddWishListPage {
 	public void setUpdateWishList() {
 		updateWsLtBtn.click();
 	}
+
+
 	
 
 }

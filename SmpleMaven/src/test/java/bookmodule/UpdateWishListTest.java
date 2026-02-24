@@ -1,4 +1,4 @@
-package ExtentReports;
+package bookmodule;
 
 import static org.testng.Assert.assertEquals;
 
@@ -18,13 +18,13 @@ import org.testng.Reporter;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.tricentis.generic.BaseClass;
-import com.tricentis.pom.AddWishListPage;
-import com.tricentis.pom.ApperalAndShoesPage;
-import com.tricentis.pom.HomePage;
-import com.tricentis.pom.ShoePage;
-import com.tricentis.pom.WishListPage;
-@Listeners(com.tricentis.generic.ListenerImplementation.class)
+import genericutility.BaseClass;
+import objectrepository.AddWishListPage;
+import objectrepository.ApperalAndShoesPage;
+import objectrepository.HomePage;
+import objectrepository.ShoePage;
+import objectrepository.WishListPage;
+@Listeners(genericutility.Listenerutility.class)
 public class UpdateWishListTest extends BaseClass implements  ITestListener{
 @Test
 public void updateWshLst() throws InterruptedException, EncryptedDocumentException, IOException {
@@ -52,7 +52,7 @@ public void updateWshLst() throws InterruptedException, EncryptedDocumentExcepti
 //	System.out.println(text);
 	String text = s.getWishListSuccessMsg();
 	Reporter.log(text,true);
-	String Expectedtext = f.readExcelData("WishList", 1, 1);
+	String Expectedtext = eu.readExcelData("WishList", 1, 1);
 	Reporter.log(text);
 	Assert.assertEquals(text, Expectedtext);
 	Thread.sleep(2000);
@@ -68,7 +68,7 @@ public void updateWshLst() throws InterruptedException, EncryptedDocumentExcepti
 //	String wishListMsg = wishLisMsgEle.getText();
 //	System.out.println(wishListMsg);
 	WishListPage w= new WishListPage(driver);
-	String wishListExp = f.readExcelData("WishList", 2, 1);
+	String wishListExp = eu.readExcelData("WishList", 2, 1);
 	String wishListAct = w.getWishListMsg();
 	Assert.assertEquals(wishListAct, wishListExp);
 	

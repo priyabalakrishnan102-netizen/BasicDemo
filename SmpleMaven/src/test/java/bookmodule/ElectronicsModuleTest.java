@@ -1,4 +1,4 @@
-package ExtentReports;
+package bookmodule;
 
 public class ElectronicsModuleTest {
 

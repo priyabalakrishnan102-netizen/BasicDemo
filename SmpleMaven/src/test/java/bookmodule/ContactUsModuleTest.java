@@ -1,4 +1,4 @@
-package ExtentReports;
+package bookmodule;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -12,11 +12,11 @@ import org.testng.Reporter;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.tricentis.generic.BaseClass;
-import com.tricentis.pom.ContactUsPage;
-import com.tricentis.pom.HomePage;
+import genericutility.BaseClass;
+import objectrepository.ContactUsPage;
+import objectrepository.HomePage;
 
-@Listeners(com.tricentis.generic.ListenerImplementation.class)
+@Listeners(genericutility.Listenerutility.class)
 
 public class ContactUsModuleTest extends  BaseClass implements ITestListener
 {
@@ -31,7 +31,7 @@ public class ContactUsModuleTest extends  BaseClass implements ITestListener
 //	driver.findElement(By.className("contact-us-button")).click();
 	ContactUsPage c= new ContactUsPage(driver);
 	Thread.sleep(2000);
-	String msg = f.readExcelData("ContactUs", 1, 1);
+	String msg = eu.readExcelData("ContactUs", 1, 1);
 	c.enquiryMsg(msg);
 	Thread.sleep(2000);
 //	String text = driver.findElement(By.xpath("//div[@class='result']")).getText();

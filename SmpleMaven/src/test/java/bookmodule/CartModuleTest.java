@@ -1,4 +1,4 @@
-package ExtentReports;
+package bookmodule;
 
 import static org.testng.Assert.fail;
 
@@ -17,11 +17,10 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.tricentis.generic.BaseClass;
-import com.tricentis.pom.AddCartPage;
-import com.tricentis.pom.ContactUsPage;
-import com.tricentis.pom.HomePage;
-public class CartModuleTest extends BaseClass implements ITestListener{
+import objectrepository.AddCartPage;
+import objectrepository.AddWishListPage;
+import objectrepository.HomePage;
+public class CartModuleTest extends genericutility.BaseClass implements ITestListener{
 @Test
 	public void AddToCart() throws InterruptedException, EncryptedDocumentException, IOException {
 	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -29,7 +28,7 @@ public class CartModuleTest extends BaseClass implements ITestListener{
 //	driver.findElement(By.id("small-searchterms")).sendKeys("smartphone"+Keys.ENTER);
 	Assert.fail();
 	HomePage h= new HomePage(driver);
-	String searchMsg = f.readExcelData("AddToCart", 1, 1);
+	String searchMsg = eu.readExcelData("AddToCart", 1, 1);
 	h.setSearch(searchMsg);
 	Thread.sleep(2000);
 //	driver.findElement(By.xpath("//input[@value='Add to cart']")).click();
@@ -41,7 +40,7 @@ public class CartModuleTest extends BaseClass implements ITestListener{
 //	String text = ele.getText();
 //	System.out.println(text);
 	Reporter.log(actualMsg, true);
-	String expectedRes = f.readExcelData("AddToCart", 2, 1);
+	String expectedRes = eu.readExcelData("AddToCart", 2, 1);
 //	SoftAssert s= new SoftAssert();
 //	s.assertEquals(actualMsg, expectedRes);
 	Assert.assertEquals(actualMsg, expectedRes);

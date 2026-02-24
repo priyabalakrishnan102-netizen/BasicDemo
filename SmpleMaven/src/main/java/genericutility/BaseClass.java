@@ -20,9 +20,10 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.beust.jcommander.Parameter;
-	import com.tricentis.pom.DashboardPage;
-	import com.tricentis.pom.HomePage;
-	import com.tricentis.pom.LoginPage;
+
+import objectrepository.DashboardPage;
+import objectrepository.HomePage;
+import objectrepository.LoginPage;
 	public class BaseClass {
 		
 		public static WebDriver driver;
@@ -30,12 +31,13 @@ import com.beust.jcommander.Parameter;
 		public static ExtentTest test;
 		
 		public Fileutility fu= new Fileutility();
+		public Excelutility eu=new Excelutility();
 		public Javautility ju= new Javautility();
 		public Listenerutility lu= new Listenerutility();
 		public Webdriverutility wu = new Webdriverutility();
 		@BeforeSuite
 		public void reportConfig() {
-			ExtentSparkReporter spark= new ExtentSparkReporter("./HTML_Reports/ExtentReports_"+j.getSystemTime()+".html");
+			ExtentSparkReporter spark= new ExtentSparkReporter("./HTML_Reports/ExtentReports_"+ju.getSystemTime()+".html");
 			report=new ExtentReports();
 			report.attachReporter(spark);
 		}
@@ -73,8 +75,8 @@ import com.beust.jcommander.Parameter;
 //			driver.findElement(By.id("Password")).sendKeys("12345678");
 //			driver.findElement(By.className("login-button")).click();
 			LoginPage l= new LoginPage(driver);
-			String email = f.readPropertyData("email");
-			String pwd = f.readPropertyData("password");
+			String email = fu.readPropertyData("email");
+			String pwd = fu.readPropertyData("password");
 			
 			l.setloginButton(email, pwd);
 		}
