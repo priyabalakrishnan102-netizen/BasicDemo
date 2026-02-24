@@ -1,7 +1,13 @@
 package electronics_module;
 
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
 public class AddToCart {
-public static void main(String[]args){
+@Test
+public void add() {
+	Reporter.log("Pass", true);
 }
+
 }
 
